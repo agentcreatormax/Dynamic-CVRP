@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Dynamic CVRP — Opti3 Visualizer</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">GPU Dynamic Routing</div>
+        <h1>Dynamic CVRP — Opti3</h1>
+        <p class="subtitle">Add a customer, delete one, or run refinement and watch the routes update.</p>
+      </div>
+      <div id="statusBadge" class="status-badge">Connecting…</div>
+    </header>
+
+    <section class="metrics-strip" aria-label="Current solution metrics">
+      <div class="metric">
+        <span class="metric-label">Final cost</span>
+        <strong id="costValue">—</strong>
+        <span id="costDelta" class="metric-sub">Current solution</span>
+      </div>
+      <div class="metric">
+        <span class="metric-label">Routes</span>
+        <strong id="routesValue">—</strong>
+        <span id="customersValue" class="metric-sub">— customers</span>
+      </div>
+      <div class="metric">
+        <span class="metric-label">Algorithm time</span>
+        <strong id="algoValue">—</strong>
+        <span id="wallValue" class="metric-sub">Wall —</span>
+      </div>
+      <div class="metric">
+        <span class="metric-label">Refinement passes</span>
+        <strong id="passesValue">—</strong>
+        <span class="metric-sub">run / requested</span>
+      </div>
+    </section>
+
+    <section class="workspace">
+      <div class="map-panel">
+        <div class="panel-head">
+          <div>
+            <h2>Routes</h2>
+            <p>Click empty space to fill X/Y. Click a customer to select it for deletion.</p>
+          </div>
+          <div id="selectionPill" class="selection-pill">No customer selected</div>
+        </div>
+
+        <div class="plot-wrap">
+          <svg id="routePlot" viewBox="0 0 820 580" role="img" aria-label="Dynamic CVRP routes"></svg>
+          <button id="previousRoutesButton" class="previous-routes-button" type="button" disabled
+                  title="Hover to preview the previous iteration. Click to pin/unpin it.">
+            Previous routes
+          </button>
+          <div id="previousStateHint" class="previous-state-hint" hidden></div>
+          <div id="plotHint" class="plot-hint">Click anywhere to choose new customer coordinates</div>
+        </div>
+
+        <div id="routeLegend" class="route-legend"></div>
+      </div>
+
+      <aside class="control-panel">
+        <section class="control-section">
+          <div class="section-kicker">Dynamic event</div>
+          <h2>Add customer</h2>
+          <form id="addForm">
+            <div class="field-grid">
+              <label>
+                <span>X</span>
+                <input id="xInput" name="x" type="number" step="any" required value="50">
+              </label>
+              <label>
+                <span>Y</span>
+                <input id="yInput" name="y" type="number" step="any" required value="80">
+              </label>
+            </div>
+            <label>
+              <span>Demand</span>
+              <input id="demandInput" name="demand" type="number" step="any" min="0.000001" required value="4">
+            </label>
+            <button id="addButton" class="primary" type="submit">Add customer + re-optimize</button>
+          </form>
+        </section>
+
+        <section class="control-section">
+          <div class="section-kicker">Current customer</div>
+          <h2 id="selectedTitle">Delete customer</h2>
+          <div id="selectedInfo" class="selected-info">Select a point on the plot.</div>
+          <label class="quantity-editor">
+            <span>Change quantity / demand</span>
+            <input id="selectedDemandInput" type="number" step="any" min="0.000001" disabled>
+          </label>
+          <button id="updateDemandButton" type="button" disabled>Update quantity + re-optimize</button>
+          <button id="deleteButton" type="button" class="danger" disabled>Delete selected + re-optimize</button>
+        </section>
+
+        <section class="control-section">
+          <div class="section-kicker">Refinement</div>
+          <div class="field-grid compact">
+            <label>
+              <span>Passes</span>
+              <input id="passesInput" type="number" min="0" max="100" step="1" value="1">
+            </label>
+            <label>
+              <span>Nearest K</span>
+              <input id="refineKInput" type="number" min="1" max="64" step="1" value="5">
+            </label>
+          </div>
+          <div class="field-grid compact">
+            <label>
+              <span>HMAX</span>
+              <input id="hmaxInput" type="number" min="1" max="64" step="1" value="5">
+            </label>
+            <label>
+              <span>Queue cap</span>
+              <input id="queueCapInput" type="number" min="1" max="16" step="1" value="5">
+            </label>
+          </div>
+          <button id="refineButton" type="button">Run refinement only</button>
+        </section>
+
+        <section class="control-section last-actions">
+          <button id="resetButton" type="button" class="ghost">Reset toy benchmark</button>
+        </section>
+      </aside>
+    </section>
+
+    <section class="details-grid">
+      <article class="detail-card">
+        <div class="panel-head slim">
+          <div>
+            <div class="section-kicker">Profiler</div>
+            <h2>Last GPU operation</h2>
+          </div>
+          <span id="lastAction" class="mono-chip">—</span>
+        </div>
+        <div id="profilerGrid" class="profiler-grid"></div>
+      </article>
+
+      <article class="detail-card">
+        <div class="panel-head slim">
+          <div>
+            <div class="section-kicker">Route state</div>
+            <h2>Current routes</h2>
+          </div>
+          <span id="capacityChip" class="mono-chip">Q = —</span>
+        </div>
+        <div id="routeTable" class="route-table"></div>
+      </article>
+    </section>
+
+    <div id="errorBox" class="error-box" role="alert" hidden></div>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

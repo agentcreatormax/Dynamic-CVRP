@@ -1,0 +1,6 @@
+passes,final_cost,algorithm_time_sec,final_routes,valid
+1,,,,NO
+5,4480101,13.836740059,259,YES
+10,,,,NO
+15,4468369,41.181305046,259,YES
+20,4469282,55.008620870,259,YES

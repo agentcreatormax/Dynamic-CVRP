@@ -1,0 +1,8 @@
+[init] XML500000_2366_05: 500000 customers, Q=1501
+[gpu] scheduler=adaptive multi-warp centroid-priority target=8 routes/thread local-hmax=5 queue-cap=5; ready-route dispatch; refine-nearest-k=5
+[gpu-occupancy] threads=256 shmem=0 scratch=global activeBlocksPerSM=3 residentBlocks=510 gridBlocks=53 routeStride=25683
+[gpu-scheduler] routes=16014 potential=41614 target=8 routes/thread schedulerWarps=163 schedulerBlocks=21 schedulerWarpsPerBlock=8 schedulerThreads=5216 effectiveRPT=8 workerWarps=256 workerBlocks=32 blocks=53
+[gpu-profile] Ts=123.483us (scan=118.584 enqueue=4.898) Tw=242.664us Tw/Wres=0.948us ratio=130.27 avgActive=0.20 util~=0.1% activeMax=11 Savg=13.39 Smax=163 SW=163 Sthreads=5216 targetRPT=8 Wres=256 Wlaunch=256 scans=94401 assign=86780 singleton=7602 blocked=301 frontierItems=94401 routeChecks=642084445 candBuild=39067 cacheSelect=94397 depotScans=4 readySignals=86780 tasks=86780 direct=17998 eject=16926 retry=51856 depthMax=14 frontierPeak=25600 qPeak=2
+[GPU-UNPLACED AFTER-REPAIR] count=0
+[AUDIT AFTER-REPAIR] bad=0
+[gpu-refine] routeStride=25683 requires 205464 bytes dynamic shared (205464 total), above configured 60 KiB/device limit 101376 bytes

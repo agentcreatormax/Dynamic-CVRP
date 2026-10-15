@@ -1,0 +1,115 @@
+Medium instance 1 benchmark workloads
+Starting instance: X-n1001-k43, 1000 customers + depot, capacity 131
+Deterministic seed: 42
+
+A: 50 ADD lines in one batch -> static dimension 1051
+B: 50 DELETE lines in one batch -> static dimension 951
+C: 25 ADD lines then 25 DELETE lines -> two batches -> static dimension 1001
+
+Dynamic deletion IDs are internal customer IDs 1..1000.
+For the static VRPs, surviving customers are renumbered contiguously as TSPLIB expects.
+Geometry/demands are identical even though IDs are renumbered.
+
+50 additions (x y demand):
+01: 99 367 6
+02: 352 618 10
+03: 826 44 5
+04: 470 549 5
+05: 996 944 8
+06: 80 565 7
+07: 849 643 5
+08: 906 882 1
+09: 591 196 7
+10: 71 46 7
+11: 233 791 5
+12: 81 875 6
+13: 887 103 6
+14: 284 464 1
+15: 854 373 3
+16: 379 363 5
+17: 686 273 3
+18: 959 699 2
+19: 73 623 1
+20: 175 546 3
+21: 250 167 3
+22: 388 276 8
+23: 655 704 7
+24: 224 701 7
+25: 863 786 4
+26: 57 234 7
+27: 32 824 7
+28: 410 274 5
+29: 216 935 1
+30: 580 897 9
+31: 322 217 3
+32: 511 405 6
+33: 936 658 3
+34: 146 271 8
+35: 252 762 6
+36: 551 269 9
+37: 598 438 5
+38: 597 408 1
+39: 224 141 9
+40: 505 93 4
+41: 48 881 9
+42: 156 642 6
+43: 811 696 9
+44: 610 65 6
+45: 390 610 1
+46: 541 257 10
+47: 566 881 1
+48: 11 696 3
+49: 117 698 5
+50: 549 768 10
+
+50 deletions (dynamic customer IDs; original TSPLIB node = ID+1):
+01: D 655  (original VRP node 656)
+02: D 115  (original VRP node 116)
+03: D 26  (original VRP node 27)
+04: D 760  (original VRP node 761)
+05: D 282  (original VRP node 283)
+06: D 251  (original VRP node 252)
+07: D 229  (original VRP node 230)
+08: D 143  (original VRP node 144)
+09: D 755  (original VRP node 756)
+10: D 105  (original VRP node 106)
+11: D 693  (original VRP node 694)
+12: D 759  (original VRP node 760)
+13: D 914  (original VRP node 915)
+14: D 559  (original VRP node 560)
+15: D 90  (original VRP node 91)
+16: D 605  (original VRP node 606)
+17: D 433  (original VRP node 434)
+18: D 33  (original VRP node 34)
+19: D 31  (original VRP node 32)
+20: D 96  (original VRP node 97)
+21: D 224  (original VRP node 225)
+22: D 239  (original VRP node 240)
+23: D 518  (original VRP node 519)
+24: D 617  (original VRP node 618)
+25: D 28  (original VRP node 29)
+26: D 575  (original VRP node 576)
+27: D 204  (original VRP node 205)
+28: D 734  (original VRP node 735)
+29: D 666  (original VRP node 667)
+30: D 719  (original VRP node 720)
+31: D 430  (original VRP node 431)
+32: D 226  (original VRP node 227)
+33: D 460  (original VRP node 461)
+34: D 604  (original VRP node 605)
+35: D 285  (original VRP node 286)
+36: D 829  (original VRP node 830)
+37: D 891  (original VRP node 892)
+38: D 7  (original VRP node 8)
+39: D 778  (original VRP node 779)
+40: D 826  (original VRP node 827)
+41: D 164  (original VRP node 165)
+42: D 715  (original VRP node 716)
+43: D 349  (original VRP node 350)
+44: D 160  (original VRP node 161)
+45: D 221  (original VRP node 222)
+46: D 981  (original VRP node 982)
+47: D 782  (original VRP node 783)
+48: D 345  (original VRP node 346)
+49: D 95  (original VRP node 96)
+50: D 390  (original VRP node 391)

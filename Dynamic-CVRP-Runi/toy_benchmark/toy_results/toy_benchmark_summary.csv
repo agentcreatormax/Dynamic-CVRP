@@ -1,0 +1,3 @@
+implementation,case,updates,algorithm_time_sec,wall_time_sec,final_cost,final_routes,valid
+P0-Opti3,toy_2_ADD,2,0.001702259,0.326202815,384,4,YES
+P0-Opti3,toy_2_DELETE,2,0.000872803,0.251621782,318,3,YES

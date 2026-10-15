@@ -1,0 +1,19 @@
+
+========== GPU Opti-3 80/20 result ==========
+Instance:          XL-n10001-k1570
+Initial customers: 8000
+ADD customers:     2000
+Final customers:   10000
+GPU final cost:    2426730
+GPU final routes:  1655
+Reference cost:    2333757 (archived full solution, not verified BKS)
+Gap vs reference:  +3.984%
+delete_total_ms           : 0.000000
+add_total_ms              : 843.769968
+scheduler_task_avg_us     : 27.438474
+worker_task_avg_us        : 31.504966
+refine_total_ms           : 422.221159
+move89_ms                 : 4.389080
+move1swap_ms              : 12.135803
+move7_ms                  : 0.795065
+Audits:            both passed

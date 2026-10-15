@@ -1,0 +1,11 @@
+[init] XML500000_2366_05: 500000 customers, Q=1501
+[gpu] scheduler=adaptive multi-warp centroid-priority target=8 routes/thread local-hmax=5 queue-cap=5; ready-route dispatch; refine-nearest-k=5
+[gpu-occupancy] threads=256 shmem=9056 scratch=shared activeBlocksPerSM=3 residentBlocks=510 gridBlocks=40 routeStride=283
+[gpu-scheduler] routes=16014 potential=16214 target=8 routes/thread schedulerWarps=64 schedulerBlocks=8 schedulerWarpsPerBlock=8 schedulerThreads=2048 effectiveRPT=8 workerWarps=256 workerBlocks=32 blocks=40
+[gpu-profile] Ts=91.401us (scan=84.361 enqueue=7.040) Tw=656.758us Tw/Wres=2.565us ratio=35.63 avgActive=0.56 util~=0.2% activeMax=17 Savg=3.63 Smax=64 SW=64 Sthreads=2048 targetRPT=8 Wres=256 Wlaunch=256 scans=1653 assign=1484 singleton=165 blocked=8 frontierItems=1653 routeChecks=8742014 candBuild=545 cacheSelect=1653 depotScans=0 readySignals=1484 tasks=1484 direct=35 eject=342 retry=1107 depthMax=9 frontierPeak=200 qPeak=2
+[GPU-UNPLACED AFTER-REPAIR] count=0
+[AUDIT AFTER-REPAIR] bad=0
+[gpu-refine] passes=1/1 nearestK=5 move89=68.812ms (784 moves, 46057 pairs) move1swap=1285.680ms (2078 moves, 46000 pairs) move7=4.003ms (1332 moves) pairRounds=22
+[AUDIT AFTER-REFINE] bad=0
+[transaction] deletes=200 adds=200 delete=7.96394ms add=1570.86ms refine=3951.01ms cost 12320935->12419019 routes=16144
+[done] profile -> /home/cs23b025/Dynamic-CVRP-Opti3/large5_load_test/large5_load_results/EVENTS_400/summary.csv

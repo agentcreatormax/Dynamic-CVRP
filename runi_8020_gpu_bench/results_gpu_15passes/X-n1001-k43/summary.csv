@@ -1,0 +1,13 @@
+metric,value
+delete_total_ms,0.000000
+add_total_ms,28.739906
+scheduler_task_avg_us,19.726924
+worker_task_avg_us,127.088382
+avg_active_route_worker_warps,3.913298
+max_active_route_worker_warps,11
+avg_active_scheduler_warps,0.607430
+max_active_scheduler_warps,1
+refine_total_ms,1389.399497
+move89_ms,384.716010
+move1swap_ms,962.619390
+move7_ms,40.215524

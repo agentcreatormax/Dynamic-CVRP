@@ -1,0 +1,14 @@
+{
+  "source_instance": "Flanders2",
+  "initial_customers": 24000,
+  "num_adds": 6000,
+  "final_customers": 30000,
+  "selection": "first 80 percent of original internal ids, add remaining 20 percent",
+  "initial_solution": "original full routes, filtered to retained customers; same within-route order",
+  "initial_routes": 256,
+  "initial_cost_rounded_euc2d": 4321854,
+  "reference_full_routes": 256,
+  "reference_full_cost_rounded_euc2d": 4373244,
+  "reference_full_cost_is_verified_BKS": false,
+  "note": "This is a batch ADD CVRP test (snapshot reoptimization), not the online dynamic VRPTW literature protocol."
+}

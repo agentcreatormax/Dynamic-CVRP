@@ -1,0 +1,15 @@
+total_events,delete_events,add_events,file
+50,25,25,large5_mixed_50.txt
+100,50,50,large5_mixed_100.txt
+200,100,100,large5_mixed_200.txt
+400,200,200,large5_mixed_400.txt
+800,400,400,large5_mixed_800.txt
+1600,800,800,large5_mixed_1600.txt
+3200,1600,1600,large5_mixed_3200.txt
+6400,3200,3200,large5_mixed_6400.txt
+12800,6400,6400,large5_mixed_12800.txt
+25600,12800,12800,large5_mixed_25600.txt
+51200,25600,25600,large5_mixed_51200.txt
+102400,51200,51200,large5_mixed_102400.txt
+204800,102400,102400,large5_mixed_204800.txt
+409600,204800,204800,large5_mixed_409600.txt

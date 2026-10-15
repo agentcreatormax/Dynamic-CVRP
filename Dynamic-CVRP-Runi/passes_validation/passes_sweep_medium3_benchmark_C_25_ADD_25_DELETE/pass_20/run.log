@@ -1,0 +1,11 @@
+[init] Flanders2: 30000 customers, Q=200
+[gpu] scheduler=adaptive multi-warp centroid-priority target=8 routes/thread local-hmax=5 queue-cap=5; ready-route dispatch; refine-nearest-k=5
+[gpu-occupancy] schedulerWarps=2 threads=256 shmem=5216 activeBlocksPerSM=3 residentBlocks=510
+[gpu-scheduler] routes=256 potential=281 target=8 routes/thread schedulerWarps=2 schedulerThreads=64 workerWarps=256 blocks=33
+[gpu-profile] Ts=24.888us (scan=20.271 enqueue=4.617) Tw=1312.500us Tw/Wres=5.127us ratio=4.85 avgActive=9.46 util~=3.7% activeMax=23 Savg=0.23 Smax=2 SW=2 Sthreads=64 targetRPT=8 Wres=256 Wlaunch=256 scans=290 assign=110 singleton=15 blocked=165 frontierItems=290 routeChecks=8176 candBuild=30 cacheSelect=288 depotScans=2 readySignals=110 tasks=110 direct=10 eject=7 retry=93 depthMax=1 frontierPeak=25 qPeak=2
+[GPU-UNPLACED AFTER-REPAIR] count=0
+[AUDIT AFTER-REPAIR] bad=0
+[gpu-refine] passes=20/20 nearestK=5 move89=1114.810ms (250 moves, 16712 pairs) move1swap=53844.518ms (716 moves, 16675 pairs) move7=16.426ms (281 moves) pairRounds=440
+[AUDIT AFTER-REFINE] bad=0
+[transaction] deletes=25 adds=25 delete=0.182494ms add=15.7636ms refine=54992.7ms cost 4373244->4469282 routes=259
+[done] profile -> /home/cs23b025/Dynamic-CVRP-Opti3-LocalityReadyQueue/passes_sweep_medium3_benchmark_C_25_ADD_25_DELETE/pass_20/summary.csv

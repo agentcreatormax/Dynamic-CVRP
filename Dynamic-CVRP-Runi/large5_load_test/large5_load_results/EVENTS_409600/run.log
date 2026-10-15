@@ -1,0 +1,2 @@
+[init] XML500000_2366_05: 500000 customers, Q=1501
+CUDA error out of memory at src/gpu_warp.cuh:2303

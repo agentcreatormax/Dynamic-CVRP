@@ -1,0 +1,2 @@
+toy_2_ADD: updates=2 alg=0.001702s wall=0.326203s cost=384 routes=4 valid=YES
+toy_2_DELETE: updates=2 alg=0.000873s wall=0.251622s cost=318 routes=3 valid=YES

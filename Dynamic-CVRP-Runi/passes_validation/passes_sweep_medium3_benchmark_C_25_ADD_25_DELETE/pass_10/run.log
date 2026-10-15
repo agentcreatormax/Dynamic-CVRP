@@ -1,0 +1,12 @@
+[init] Flanders2: 30000 customers, Q=200
+[gpu] scheduler=adaptive multi-warp centroid-priority target=8 routes/thread local-hmax=5 queue-cap=5; ready-route dispatch; refine-nearest-k=5
+[gpu-occupancy] schedulerWarps=2 threads=256 shmem=5216 activeBlocksPerSM=3 residentBlocks=510
+[gpu-scheduler] routes=256 potential=281 target=8 routes/thread schedulerWarps=2 schedulerThreads=64 workerWarps=256 blocks=33
+[gpu-profile] Ts=39.744us (scan=35.125 enqueue=4.619) Tw=1425.478us Tw/Wres=5.568us ratio=7.14 avgActive=9.82 util~=3.8% activeMax=23 Savg=0.33 Smax=2 SW=2 Sthreads=64 targetRPT=8 Wres=256 Wlaunch=256 scans=572 assign=106 singleton=14 blocked=452 frontierItems=572 routeChecks=8168 candBuild=30 cacheSelect=570 depotScans=2 readySignals=106 tasks=106 direct=10 eject=7 retry=89 depthMax=1 frontierPeak=25 qPeak=1
+[GPU-UNPLACED AFTER-REPAIR] count=1 870
+[AUDIT AFTER-REPAIR] active customer 870 occurs 0 times
+[AUDIT AFTER-REPAIR] bad=1
+[gpu-refine] passes=10/10 nearestK=5 move89=559.478ms (248 moves, 8404 pairs) move1swap=26940.930ms (609 moves, 8372 pairs) move7=8.299ms (226 moves) pairRounds=220
+[AUDIT AFTER-REFINE] active customer 870 occurs 0 times
+[AUDIT AFTER-REFINE] bad=1
+[INVALID] event 1: active customer 870 unplaced

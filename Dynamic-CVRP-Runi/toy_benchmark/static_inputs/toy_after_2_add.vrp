@@ -1,0 +1,36 @@
+NAME : toy_after_2_add
+COMMENT : Expected customer set after the two toy ADD events
+TYPE : CVRP
+DIMENSION : 12
+EDGE_WEIGHT_TYPE : EUC_2D
+CAPACITY : 15
+NODE_COORD_SECTION
+1    50    50
+2    20    20
+3    25    25
+4    20    80
+5    25    75
+6    80    20
+7    75    25
+8    80    80
+9    75    75
+10    50    20
+11    50    80
+12    55    15
+DEMAND_SECTION
+1    0
+2    4
+3    3
+4    5
+5    4
+6    6
+7    3
+8    5
+9    4
+10    5
+11    4
+12    2
+DEPOT_SECTION
+1
+-1
+EOF

@@ -1,0 +1,14 @@
+events=50 delete=25 add=25 alg=4.085034s wall=5.246632s cost=12335987 routes=16037 valid=YES status=OK
+events=100 delete=50 add=50 alg=4.219980s wall=5.441733s cost=12348188 routes=16056 valid=YES status=OK
+events=200 delete=100 add=100 alg=4.585011s wall=5.668548s cost=12374911 routes=16087 valid=YES status=OK
+events=400 delete=200 add=200 alg=5.529828s wall=6.746543s cost=12419019 routes=16144 valid=YES status=OK
+events=800 delete=400 add=400 alg=6.933288s wall=8.032233s cost=12486501 routes=16224 valid=YES status=OK
+events=1600 delete=800 add=800 alg=9.954168s wall=11.304382s cost=12582454 routes=16337 valid=YES status=OK
+events=3200 delete=1600 add=1600 alg=15.090582s wall=16.844958s cost=12715321 routes=16482 valid=YES status=OK
+events=6400 delete=3200 add=3200 alg=23.810709s wall=27.160800s cost=12869226 routes=16644 valid=YES status=OK
+events=12800 delete=6400 add=6400 alg=38.370028s wall=41.476190s cost=13116377 routes=16902 valid=YES status=OK
+events=25600 delete=12800 add=12800 alg=FAILED wall=58.768207s cost=- routes=- valid=NO status=FAILED
+events=51200 delete=25600 add=25600 alg=FAILED wall=103.589994s cost=- routes=- valid=NO status=FAILED
+events=102400 delete=51200 add=51200 alg=FAILED wall=212.753930s cost=- routes=- valid=NO status=FAILED
+events=204800 delete=102400 add=102400 alg=FAILED wall=0.463201s cost=- routes=- valid=NO status=FAILED
+events=409600 delete=204800 add=204800 alg=FAILED wall=0.733497s cost=- routes=- valid=NO status=FAILED

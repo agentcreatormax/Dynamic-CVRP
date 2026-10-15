@@ -1,0 +1,19 @@
+
+========== GPU Runi 80/20 result ==========
+Instance:          Flanders2
+Initial customers: 24000
+ADD customers:     6000
+Final customers:   30000
+GPU final cost:    4687091
+GPU final routes:  266
+Reference cost:    4373244 (archived full solution, not verified BKS)
+Gap vs reference:  +7.177%
+delete_total_ms           : 0.000000
+add_total_ms              : 380.487275
+scheduler_task_avg_us     : 31.727699
+worker_task_avg_us        : 370.616009
+refine_total_ms           : 30275.066164
+move89_ms                 : 599.329400
+move1swap_ms              : 29647.268513
+move7_ms                  : 12.496432
+Audits:            both passed

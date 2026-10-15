@@ -1,0 +1,15 @@
+{
+  "source_instance": "X-n1001-k43",
+  "initial_customers": 800,
+  "num_adds": 200,
+  "final_customers": 1000,
+  "selection": "first 800 original customer IDs retained; last 200 customers added in original ID order",
+  "initial_solution": "archived 800-customer starting solution (not necessarily route-filtered full reference)",
+  "initial_routes": 34,
+  "initial_cost_rounded_euc2d": 59403,
+  "reference_full_routes": 43,
+  "reference_full_cost_rounded_euc2d": 72455,
+  "reference_full_cost_is_verified_BKS": false,
+  "reference_full_vrp": "reconstructed from initial.vrp and events_add_to_full.txt",
+  "note": "Batch ADD snapshot reoptimization. Full reference solution is feasible; not a certified BKS or matched dynamic online score."
+}

@@ -1,0 +1,32 @@
+NAME : toy
+COMMENT : Toy Dynamic-CVRP benchmark: 1 depot + 9 customers
+TYPE : CVRP
+DIMENSION : 10
+EDGE_WEIGHT_TYPE : EUC_2D
+CAPACITY : 15
+NODE_COORD_SECTION
+1    50    50
+2    20    20
+3    25    25
+4    20    80
+5    25    75
+6    80    20
+7    75    25
+8    80    80
+9    75    75
+10    50    20
+DEMAND_SECTION
+1    0
+2    4
+3    3
+4    5
+5    4
+6    6
+7    3
+8    5
+9    4
+10    5
+DEPOT_SECTION
+1
+-1
+EOF

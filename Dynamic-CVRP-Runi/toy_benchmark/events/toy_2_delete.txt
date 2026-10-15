@@ -1,0 +1,4 @@
+# toy benchmark: 2 DELETE events
+# DELETE IDs are stable internal customer IDs (TSPLIB node = ID + 1)
+D 2
+D 7

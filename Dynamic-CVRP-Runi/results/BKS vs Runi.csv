@@ -1,0 +1,7 @@
+Instance,Customers,new customers,Capacity,BKS cost,Runi15 cost,Runi15 vs BKS gap,Runi15 time
+,,,,,,,
+X1001-k43,"800","200",131,72346,76974,6.397%,1.417 sec
+,,,,,,,
+X10001-k1570,"8000","2000",479,"2333757 ",2426730,3.984%,1.265 sec
+,,,,,,,
+Flanders2,"24000","6000",200,"4373244 ",4687091,7.177%,30.655 sec

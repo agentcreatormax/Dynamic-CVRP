@@ -123,7 +123,19 @@
           <button id="refineButton" type="button">Run refinement only</button>
         </section>
 
+        <section class="control-section">
+          <div class="section-kicker">Vehicle settings</div>
+          <h2>Truck capacity</h2>
+          <label>
+            <span>Maximum route load (Q)</span>
+            <input id="truckCapacityInput" type="number" step="any" min="0.000001" required>
+          </label>
+          <p class="control-note">Changing Q keeps the current routes. Q cannot be below an existing route load.</p>
+          <button id="setCapacityButton" type="button">Apply truck capacity</button>
+        </section>
+
         <section class="control-section last-actions">
+          <button id="undoButton" type="button" class="ghost" disabled>Undo last operation</button>
           <button id="resetButton" type="button" class="ghost">Reset toy benchmark</button>
         </section>
       </aside>

@@ -478,3 +478,13 @@ button.ghost { background: transparent; }
   color: var(--accent);
   font-size: 12px;
 }
+
+/* Toy-instance capacity and persistent undo controls. */
+.control-note {
+  margin: -2px 0 12px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.5;
+}
+.last-actions { display: grid; gap: 10px; }
+#undoButton:not(:disabled) { border-color: rgba(125, 211, 252, .40); }

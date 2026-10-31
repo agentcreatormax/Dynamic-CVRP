@@ -9,6 +9,8 @@ It starts from the included 10-vertex toy benchmark. You can:
 - click an existing customer and DELETE it;
 - run refinement without changing the customer set;
 - change PASSES, nearest-K, HMAX, and queue capacity;
+- change **truck capacity Q** from the Vehicle settings panel (only when every existing route still fits);
+- **Undo last operation** repeatedly, including ADD, DELETE, demand update, refinement, capacity and reset, even after restarting the website;
 - see the new routes immediately;
 - see final cost, algorithm time, wall time, routes, and passes run/requested;
 - see the detailed scheduler/worker/refinement profiler values produced by
@@ -166,3 +168,19 @@ PORT=8080 CUDA_ARCH=120 ./start_visualizer.sh
 ```
 
 then open `http://127.0.0.1:8080`.
+
+## Undo and truck capacity (new)
+
+The **Undo last operation** button restores the saved `before.vrp`, `before.sol`,
+and previous operation metadata for each successful edit. Undo snapshots are
+recorded in `runtime/history/<timestamp>_<action>/before.*` and the stack is
+persisted in `runtime/undo_stack.json`. **Undo modifies the actual backend
+state**, not merely the map display. Multiple consecutive undos are supported.
+
+The **Truck capacity** control edits `CAPACITY` in `runtime/current.vrp`.
+It does not automatically reconstruct routes, so it rejects values below the
+heaviest existing route load. It can be undone. The original toy default is
+unchanged unless you also modify `sample_data/toy_start.vrp`.
+
+Restart the visualizer after replacing its source files, then refresh the
+browser (Ctrl+Shift+R) to load the new UI.

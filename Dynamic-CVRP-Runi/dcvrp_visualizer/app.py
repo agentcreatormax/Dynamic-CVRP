@@ -33,6 +33,7 @@ RUNTIME_DIR = VIS_DIR / "runtime"
 CURRENT_VRP = RUNTIME_DIR / "current.vrp"
 CURRENT_SOL = RUNTIME_DIR / "current.sol"
 LAST_JSON = RUNTIME_DIR / "last_run.json"
+UNDO_STACK = RUNTIME_DIR / "undo_stack.json"
 HISTORY_DIR = RUNTIME_DIR / "history"
 
 DEFAULT_START_VRP = Path(
@@ -68,6 +69,117 @@ def ensure_runtime(reset: bool = False) -> None:
         shutil.copy2(DEFAULT_START_SOL, CURRENT_SOL)
         if LAST_JSON.exists():
             LAST_JSON.unlink()
+
+
+def read_undo_stack() -> list[dict]:
+    """Persistent history of successful edits, newest edit last."""
+    if not UNDO_STACK.exists():
+        return []
+    items = json.loads(UNDO_STACK.read_text())
+    if not isinstance(items, list):
+        raise ValueError("Invalid undo history")
+    return items
+
+
+def write_undo_stack(items: list[dict]) -> None:
+    tmp = UNDO_STACK.with_name(UNDO_STACK.name + ".tmp")
+    tmp.write_text(json.dumps(items, indent=2))
+    tmp.replace(UNDO_STACK)
+
+
+def save_before_edit(run_dir: Path) -> None:
+    """Record the *actual* instance, routes and previous operation metadata."""
+    ensure_runtime()
+    run_dir.mkdir(parents=True, exist_ok=False)
+    shutil.copy2(CURRENT_VRP, run_dir / "before.vrp")
+    shutil.copy2(CURRENT_SOL, run_dir / "before.sol")
+    if LAST_JSON.exists():
+        shutil.copy2(LAST_JSON, run_dir / "before_last_run.json")
+
+
+def record_undo(run_dir: Path, description: str) -> None:
+    stack = read_undo_stack()
+    stack.append({"snapshot": run_dir.name, "description": description})
+    write_undo_stack(stack)
+
+
+def undo_last_edit() -> dict:
+    stack = read_undo_stack()
+    if not stack:
+        raise ValueError("Nothing to undo yet")
+    entry = stack[-1]
+    # All undo snapshots are named history directories created by this server.
+    name = entry["snapshot"]
+    if Path(name).name != name or name in (".", ".."):
+        raise ValueError("Invalid undo snapshot name")
+    snap = HISTORY_DIR / name
+    if not (snap / "before.vrp").is_file() or not (snap / "before.sol").is_file():
+        raise ValueError(f"Undo snapshot no longer exists: {snap}")
+    shutil.copy2(snap / "before.vrp", CURRENT_VRP)
+    shutil.copy2(snap / "before.sol", CURRENT_SOL)
+    before_last = snap / "before_last_run.json"
+    if before_last.exists():
+        shutil.copy2(before_last, LAST_JSON)
+    elif LAST_JSON.exists():
+        LAST_JSON.unlink()
+    write_undo_stack(stack[:-1])
+    result = build_state()
+    result["notice"] = f"Undid: {entry['description']}"
+    return result
+
+
+def update_capacity(payload: dict) -> dict:
+    """Set capacity without changing route membership; reject infeasible reductions."""
+    ensure_runtime()
+    capacity = finite_number(payload.get("capacity"), "truck capacity")
+    if capacity <= 0:
+        raise ValueError("truck capacity must be positive")
+    inst = parse_vrp(CURRENT_VRP)
+    sol = parse_sol(CURRENT_SOL)
+    if math.isclose(capacity, inst["capacity"], rel_tol=1e-12, abs_tol=1e-12):
+        return build_state()
+    max_load = max(
+        (sum(inst["customers"][cid]["demand"] for cid in route)
+         for route in sol["routes"]),
+        default=0.0,
+    )
+    if capacity + 1e-9 < max_load:
+        raise ValueError(
+            f"Cannot set capacity to {capacity:g}: an existing route has "
+            f"load {max_load:g}. First edit/reset the routes, or choose a "
+            f"capacity of at least {max_load:g}."
+        )
+
+    lines = CURRENT_VRP.read_text().splitlines(keepends=True)
+    result_lines = []
+    replaced = False
+    for line in lines:
+        if re.match(r"^\s*CAPACITY\s*(?::|\s)", line, flags=re.I):
+            newline = "\r\n" if line.endswith("\r\n") else ("\n" if line.endswith("\n") else "")
+            result_lines.append(f"CAPACITY : {capacity:.12g}{newline}")
+            replaced = True
+        else:
+            result_lines.append(line)
+    if not replaced:
+        raise ValueError("Current VRP file has no CAPACITY field")
+
+    stamp = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
+    run_dir = HISTORY_DIR / f"{stamp}_capacity"
+    save_before_edit(run_dir)
+    previous = capture_current_state()
+    tmp = CURRENT_VRP.with_suffix(".vrp.tmp")
+    tmp.write_text("".join(result_lines))
+    tmp.replace(CURRENT_VRP)
+    last = {
+        "action": "capacity", "description": f"Truck capacity: {inst['capacity']:g} \u2192 {capacity:g}",
+        "event": "", "before_cost": sol["cost"], "after_cost": sol["cost"],
+        "cost_change": 0, "profile": {}, "previous_state": previous,
+        "timestamp": stamp, "run_dir": str(run_dir),
+        "passes_requested": None, "passes_run": None,
+    }
+    LAST_JSON.write_text(json.dumps(last, indent=2))
+    record_undo(run_dir, last["description"])
+    return build_state(last)
 
 
 def parse_vrp(path: Path) -> dict:
@@ -288,6 +400,8 @@ def build_state(last: dict | None = None) -> dict:
         "routes": routes_payload,
         "cost": sol["cost"],
         "last": last,
+        "can_undo": bool(read_undo_stack()),
+        "undo_depth": len(read_undo_stack()),
         "defaults": {
             "passes": DEFAULT_PASSES,
             "hmax": DEFAULT_HMAX,
@@ -396,7 +510,7 @@ def run_action(action: str, payload: dict) -> dict:
 
     stamp = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
     run_dir = HISTORY_DIR / f"{stamp}_{action}"
-    run_dir.mkdir(parents=True, exist_ok=False)
+    save_before_edit(run_dir)
 
     event_file = run_dir / "event.txt"
     event_file.write_text(event_line)
@@ -478,20 +592,23 @@ def run_action(action: str, payload: dict) -> dict:
     }
 
     LAST_JSON.write_text(json.dumps(last, indent=2))
+    record_undo(run_dir, action_desc)
     return build_state(last)
 
 
 def reset_state() -> dict:
+    ensure_runtime()
+    stamp = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
+    run_dir = HISTORY_DIR / f"{stamp}_reset"
+    save_before_edit(run_dir)
     ensure_runtime(reset=True)
-    return build_state(
-        {
-            "action": "reset",
-            "description": "Reset to toy start state",
-            "profile": {},
-            "passes_requested": None,
-            "passes_run": None,
-        }
-    )
+    last = {
+        "action": "reset", "description": "Reset to toy start state",
+        "profile": {}, "passes_requested": None, "passes_run": None,
+    }
+    LAST_JSON.write_text(json.dumps(last, indent=2))
+    record_undo(run_dir, last["description"])
+    return build_state(last)
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -571,6 +688,10 @@ class Handler(BaseHTTPRequestHandler):
                     result = run_action("refine", payload)
                 elif path == "/api/reset":
                     result = reset_state()
+                elif path == "/api/undo":
+                    result = undo_last_edit()
+                elif path == "/api/capacity":
+                    result = update_capacity(payload)
                 else:
                     self.send_error(HTTPStatus.NOT_FOUND)
                     return

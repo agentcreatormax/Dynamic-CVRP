@@ -26,6 +26,9 @@
     queueCap: $("queueCapInput"),
     refineButton: $("refineButton"),
     resetButton: $("resetButton"),
+    undoButton: $("undoButton"),
+    truckCapacity: $("truckCapacityInput"),
+    setCapacityButton: $("setCapacityButton"),
     cost: $("costValue"),
     costDelta: $("costDelta"),
     routes: $("routesValue"),
@@ -72,6 +75,8 @@
     els.addButton.disabled = flag;
     els.refineButton.disabled = flag;
     els.resetButton.disabled = flag;
+    els.undoButton.disabled = flag || !state?.can_undo;
+    els.setCapacityButton.disabled = flag;
     els.deleteButton.disabled = flag || selectedId === null;
     els.updateDemandButton.disabled = flag || selectedId === null;
     els.selectedDemand.disabled = flag || selectedId === null;
@@ -528,6 +533,11 @@
     els.routes.textContent = String(state.routes.length);
     els.customers.textContent = `${state.customers.length} customers`;
     els.capacity.textContent = `Q = ${fmt(state.capacity, 2)}`;
+    els.truckCapacity.value = String(state.capacity);
+    els.undoButton.disabled = busy || !state.can_undo;
+    els.undoButton.textContent = state.can_undo
+      ? `Undo last operation (${state.undo_depth})`
+      : "Undo last operation";
 
     const last = state.last || {};
     const p = last.profile || {};
@@ -611,6 +621,7 @@
       selectedId = null;
       applyState(data);
       setBusy(false);
+      if (data.notice) setStatus(data.notice, "ok");
     } catch (err) {
       setBusy(false);
       showError(err.message);
@@ -651,6 +662,20 @@
 
   els.refineButton.addEventListener("click", () => {
     doOperation("/api/refine", params(), "Refining routes…");
+  });
+
+  els.undoButton.addEventListener("click", () => {
+    if (!state?.can_undo) return;
+    doOperation("/api/undo", {}, "Undoing last operation…");
+  });
+
+  els.setCapacityButton.addEventListener("click", () => {
+    const capacity = Number(els.truckCapacity.value);
+    if (!Number.isFinite(capacity) || capacity <= 0) {
+      showError("Truck capacity must be a positive number.");
+      return;
+    }
+    doOperation("/api/capacity", { capacity }, "Updating truck capacity…");
   });
 
   els.resetButton.addEventListener("click", () => {

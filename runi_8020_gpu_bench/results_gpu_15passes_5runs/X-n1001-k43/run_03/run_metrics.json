@@ -1,0 +1,33 @@
+{
+  "add_customers": 200,
+  "archived_reference_cost": 72455,
+  "archived_reference_is_certified_bks": false,
+  "final_cost": 78832,
+  "final_customers": 1000,
+  "gap_vs_archived_reference_pct": 8.8013249603202,
+  "gap_vs_official_bks_pct": 8.986340762041696,
+  "initial_customers": 800,
+  "instance": "X-n1001-k43",
+  "metrics": {
+    "add_total_ms": 30.591849,
+    "avg_active_route_worker_warps": 3.571905,
+    "avg_active_scheduler_warps": 0.604268,
+    "delete_total_ms": 0.0,
+    "max_active_route_worker_warps": 9.0,
+    "max_active_scheduler_warps": 1.0,
+    "move1swap_ms": 311.444475,
+    "move7_ms": 0.697848,
+    "move89_ms": 24.564883,
+    "refine_total_ms": 338.495533,
+    "scheduler_task_avg_us": 18.480839,
+    "worker_task_avg_us": 109.242542
+  },
+  "official_bks_cost": 72332,
+  "official_bks_last_updated": "2026-10-24",
+  "official_bks_source_url": "https://galgos.inf.puc-rio.br/cvrplib/en/bounds/257",
+  "route_count": 45,
+  "run_id": "run_03",
+  "total_gpu_ms": 369.08738200000005,
+  "validated": true,
+  "wall_time_seconds": 0.565
+}

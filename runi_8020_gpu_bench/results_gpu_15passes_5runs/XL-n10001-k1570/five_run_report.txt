@@ -1,0 +1,20 @@
+5-run Runi 80/20 summary: XL-n10001-k1570
+Validated repetitions: 5
+Final costs: 2427048, 2427480, 2430269, 2427378, 2428812
+Mean final cost (Runi15): 2428197.40
+Sample variance (cost^2): 1794114.80
+Sample standard deviation: 1339.45
+Min / max final cost: 2427048 / 2430269
+Archived reference cost (not certified BKS): 2333757
+Mean gap vs archived reference: +4.047%
+Archived-reference gap range: +3.997% to +4.135%
+Official CVRPLIB BKS: 2329417 (updated 2026-10-30)
+Mean gap vs official BKS: +4.241%
+Official-BKS gap range: +4.191% to +4.329%
+BKS source: https://galgos.inf.puc-rio.br/cvrplib/en/bounds/379
+Mean ADD time: 847.409 ms
+Mean refinement time: 443.724 ms
+Mean total GPU-stage time: 1291.134 ms
+Mean external wall time: 1.548 s
+
+Interpretation: variance and standard deviation describe run-to-run cost variation. The archived reference gap is distinct from the official CVRPLIB BKS gap.

@@ -11,5 +11,9 @@
   "reference_full_cost_rounded_euc2d": 72455,
   "reference_full_cost_is_verified_BKS": false,
   "reference_full_vrp": "reconstructed from initial.vrp and events_add_to_full.txt",
-  "note": "Batch ADD snapshot reoptimization. Full reference solution is feasible; not a certified BKS or matched dynamic online score."
+  "note": "Batch ADD snapshot reoptimization.",
+  "official_bks_cost_rounded_euc2d": 72332,
+  "official_bks_last_updated": "2026-10-24",
+  "official_bks_source_url": "https://galgos.inf.puc-rio.br/cvrplib/en/bounds/257",
+  "official_bks_source": "CVRPLIB bound history, checked 2026-11-05"
 }

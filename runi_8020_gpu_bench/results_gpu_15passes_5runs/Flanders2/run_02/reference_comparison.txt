@@ -1,0 +1,26 @@
+
+========== Runi ADD 80/20 single-run result ==========
+Instance:                  Flanders2
+Run:                       run_02
+Initial customers:         24000
+ADD customers:             6000
+Final customers:           30000
+GPU final cost:            4658513
+GPU final routes:          265
+Archived reference cost:   4373244 (not certified BKS)
+Gap vs archived reference: +6.523%
+Official CVRPLIB BKS:      4364450 (updated 2026-11-01)
+Gap vs official BKS:       +6.738%
+Total GPU stages:          28499.546 ms
+External wall time:        29 s
+delete_total_ms           : 0.0
+add_total_ms              : 392.523122
+scheduler_task_avg_us     : 32.380893
+worker_task_avg_us        : 363.756065
+refine_total_ms           : 28107.022515
+move89_ms                 : 598.189537
+move1swap_ms              : 27482.301585
+move7_ms                  : 11.83501
+Final snapshot:            same customer set and capacity as reference
+GPU audits:                both passed; no unplaced customers
+Machine-readable output:   run_metrics.json

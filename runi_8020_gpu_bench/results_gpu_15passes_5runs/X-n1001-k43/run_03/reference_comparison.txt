@@ -1,0 +1,26 @@
+
+========== Runi ADD 80/20 single-run result ==========
+Instance:                  X-n1001-k43
+Run:                       run_03
+Initial customers:         800
+ADD customers:             200
+Final customers:           1000
+GPU final cost:            78832
+GPU final routes:          45
+Archived reference cost:   72455 (not certified BKS)
+Gap vs archived reference: +8.801%
+Official CVRPLIB BKS:      72332 (updated 2026-10-24)
+Gap vs official BKS:       +8.986%
+Total GPU stages:          369.087 ms
+External wall time:        1 s
+delete_total_ms           : 0.0
+add_total_ms              : 30.591849
+scheduler_task_avg_us     : 18.480839
+worker_task_avg_us        : 109.242542
+refine_total_ms           : 338.495533
+move89_ms                 : 24.564883
+move1swap_ms              : 311.444475
+move7_ms                  : 0.697848
+Final snapshot:            same customer set and capacity as reference
+GPU audits:                both passed; no unplaced customers
+Machine-readable output:   run_metrics.json

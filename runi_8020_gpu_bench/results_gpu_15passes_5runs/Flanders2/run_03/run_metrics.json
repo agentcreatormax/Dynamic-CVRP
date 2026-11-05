@@ -1,0 +1,33 @@
+{
+  "add_customers": 6000,
+  "archived_reference_cost": 4373244,
+  "archived_reference_is_certified_bks": false,
+  "final_cost": 4713911,
+  "final_customers": 30000,
+  "gap_vs_archived_reference_pct": 7.789800889225481,
+  "gap_vs_official_bks_pct": 8.006988280310233,
+  "initial_customers": 24000,
+  "instance": "Flanders2",
+  "metrics": {
+    "add_total_ms": 389.075529,
+    "avg_active_route_worker_warps": 8.613051,
+    "avg_active_scheduler_warps": 15.202848,
+    "delete_total_ms": 0.0,
+    "max_active_route_worker_warps": 43.0,
+    "max_active_scheduler_warps": 25.0,
+    "move1swap_ms": 27263.480094,
+    "move7_ms": 11.862002,
+    "move89_ms": 599.888469,
+    "refine_total_ms": 27890.106546,
+    "scheduler_task_avg_us": 32.463993,
+    "worker_task_avg_us": 365.272189
+  },
+  "official_bks_cost": 4364450,
+  "official_bks_last_updated": "2026-11-01",
+  "official_bks_source_url": "https://galgos.inf.puc-rio.br/cvrplib/en/bounds/263",
+  "route_count": 268,
+  "run_id": "run_03",
+  "total_gpu_ms": 28279.182075,
+  "validated": true,
+  "wall_time_seconds": 28.722
+}

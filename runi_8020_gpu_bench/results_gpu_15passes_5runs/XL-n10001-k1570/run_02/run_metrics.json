@@ -1,0 +1,33 @@
+{
+  "add_customers": 2000,
+  "archived_reference_cost": 2333757,
+  "archived_reference_is_certified_bks": false,
+  "final_cost": 2427480,
+  "final_customers": 10000,
+  "gap_vs_archived_reference_pct": 4.01597081444212,
+  "gap_vs_official_bks_pct": 4.209765791182944,
+  "initial_customers": 8000,
+  "instance": "XL-n10001-k1570",
+  "metrics": {
+    "add_total_ms": 850.524864,
+    "avg_active_route_worker_warps": 0.321181,
+    "avg_active_scheduler_warps": 2.771448,
+    "delete_total_ms": 0.0,
+    "max_active_route_worker_warps": 5.0,
+    "max_active_scheduler_warps": 14.0,
+    "move1swap_ms": 12.147607,
+    "move7_ms": 0.780455,
+    "move89_ms": 4.162408,
+    "refine_total_ms": 444.341271,
+    "scheduler_task_avg_us": 26.88369,
+    "worker_task_avg_us": 30.810933
+  },
+  "official_bks_cost": 2329417,
+  "official_bks_last_updated": "2026-10-30",
+  "official_bks_source_url": "https://galgos.inf.puc-rio.br/cvrplib/en/bounds/379",
+  "route_count": 1656,
+  "run_id": "run_02",
+  "total_gpu_ms": 1294.866135,
+  "validated": true,
+  "wall_time_seconds": 1.551
+}

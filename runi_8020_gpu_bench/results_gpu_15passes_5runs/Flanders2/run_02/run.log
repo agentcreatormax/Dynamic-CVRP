@@ -1,0 +1,11 @@
+[init] Flanders2_initial80: 24000 customers, Q=200
+[gpu] scheduler=adaptive multi-warp centroid-priority target=8 routes/thread local-hmax=5 queue-cap=5; ready-route dispatch; refine-nearest-k=5
+[gpu-occupancy] threads=256 shmem=0 scratch=global activeBlocksPerSM=3 residentBlocks=510 gridBlocks=36 routeStride=6113
+[gpu-scheduler] routes=256 potential=6256 target=8 routes/thread schedulerWarps=25 schedulerBlocks=4 schedulerWarpsPerBlock=8 schedulerThreads=800 effectiveRPT=8 workerWarps=256 workerBlocks=32 blocks=36
+[gpu-profile] Ts=32.381us (scan=30.211 enqueue=2.170) Tw=363.756us Tw/Wres=1.421us ratio=22.79 avgActive=8.55 util~=3.3% activeMax=42 Savg=15.17 Smax=25 SW=25 Sthreads=800 targetRPT=8 Wres=256 Wlaunch=256 scans=11852 assign=9435 singleton=275 blocked=2148 frontierItems=11852 routeChecks=1659212 candBuild=6375 cacheSelect=11765 depotScans=87 readySignals=9435 tasks=9435 direct=5725 eject=1576 retry=2134 depthMax=9 frontierPeak=6000 qPeak=1
+[GPU-UNPLACED AFTER-REPAIR] count=0
+[AUDIT AFTER-REPAIR] bad=0
+[gpu-refine] passes=15/15 nearestK=5 move89=598.190ms (2326 moves, 13884 pairs) move1swap=27482.302ms (5912 moves, 13006 pairs) move7=11.835ms (2251 moves) pairRounds=333
+[AUDIT AFTER-REFINE] bad=0
+[transaction] deletes=0 adds=6000 delete=0ms add=392.523ms refine=28107ms cost 4321854->4658513 routes=265
+[done] profile -> /home/cs23b025/Dynamic-CVRP/runi_8020_gpu_bench/results_gpu_15passes_5runs/Flanders2/run_02/summary.csv

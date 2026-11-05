@@ -10,5 +10,9 @@
   "reference_full_routes": 256,
   "reference_full_cost_rounded_euc2d": 4373244,
   "reference_full_cost_is_verified_BKS": false,
-  "note": "This is a batch ADD CVRP test (snapshot reoptimization), not the online dynamic VRPTW literature protocol."
+  "note": "This is a batch ADD CVRP test (snapshot reoptimization)",
+  "official_bks_cost_rounded_euc2d": 4364450,
+  "official_bks_last_updated": "2026-11-01",
+  "official_bks_source_url": "https://galgos.inf.puc-rio.br/cvrplib/en/bounds/263",
+  "official_bks_source": "CVRPLIB bound history, checked 2026-11-05"
 }

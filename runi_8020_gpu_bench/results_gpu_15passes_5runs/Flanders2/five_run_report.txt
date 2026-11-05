@@ -1,0 +1,20 @@
+5-run Runi 80/20 summary: Flanders2
+Validated repetitions: 5
+Final costs: 4698907, 4658513, 4713911, 4688711, 4665229
+Mean final cost (Runi15): 4685054.20
+Sample variance (cost^2): 533865253.20
+Sample standard deviation: 23105.52
+Min / max final cost: 4658513 / 4713911
+Archived reference cost (not certified BKS): 4373244
+Mean gap vs archived reference: +7.130%
+Archived-reference gap range: +6.523% to +7.790%
+Official CVRPLIB BKS: 4364450 (updated 2026-11-01)
+Mean gap vs official BKS: +7.346%
+Official-BKS gap range: +6.738% to +8.007%
+BKS source: https://galgos.inf.puc-rio.br/cvrplib/en/bounds/263
+Mean ADD time: 392.223 ms
+Mean refinement time: 28064.661 ms
+Mean total GPU-stage time: 28456.884 ms
+Mean external wall time: 28.898 s
+
+Interpretation: variance and standard deviation describe run-to-run cost variation. The archived reference gap is distinct from the official CVRPLIB BKS gap.

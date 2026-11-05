@@ -1,0 +1,11 @@
+[init] X-n1001-k43-dynamic-start-800: 800 customers, Q=131
+[gpu] scheduler=adaptive multi-warp centroid-priority target=8 routes/thread local-hmax=5 queue-cap=5; ready-route dispatch; refine-nearest-k=5
+[gpu-occupancy] threads=256 shmem=8576 scratch=shared activeBlocksPerSM=3 residentBlocks=510 gridBlocks=31 routeStride=268
+[gpu-scheduler] routes=34 potential=234 target=8 routes/thread schedulerWarps=1 schedulerBlocks=1 schedulerWarpsPerBlock=8 schedulerThreads=32 effectiveRPT=8 workerWarps=234 workerBlocks=30 blocks=31
+[gpu-profile] Ts=18.744us (scan=16.447 enqueue=2.296) Tw=108.007us Tw/Wres=0.462us ratio=40.61 avgActive=3.44 util~=1.5% activeMax=10 Savg=0.60 Smax=1 SW=1 Sthreads=32 targetRPT=8 Wres=234 Wlaunch=234 scans=1246 assign=977 singleton=141 blocked=129 frontierItems=1246 routeChecks=13402 candBuild=340 cacheSelect=1241 depotScans=5 readySignals=977 tasks=977 direct=59 eject=176 retry=742 depthMax=6 frontierPeak=200 qPeak=2
+[GPU-UNPLACED AFTER-REPAIR] count=0
+[AUDIT AFTER-REPAIR] bad=0
+[gpu-refine] passes=15/15 nearestK=5 move89=24.571ms (354 moves, 2411 pairs) move1swap=348.066ms (571 moves, 2005 pairs) move7=0.886ms (133 moves) pairRounds=261
+[AUDIT AFTER-REFINE] bad=0
+[transaction] deletes=0 adds=200 delete=0ms add=31.4639ms refine=375.27ms cost 59403->77499 routes=44
+[done] profile -> /home/cs23b025/Dynamic-CVRP/runi_8020_gpu_bench/results_gpu_15passes_5runs/X-n1001-k43/run_02/summary.csv
